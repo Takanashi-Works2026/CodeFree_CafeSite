@@ -1,0 +1,382 @@
+/* google fontsを読み込む */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+
+/* base */
+html {
+    -webkit-appearance: none;
+    appearance: none;
+    /* Chrome以外での崩れ防止 */
+    -webkit-text-size-adjust: 100%;
+    /* コンテンツからはみ出ずに文字折り返し */
+    word-break: break-all;
+    /* 移動したときになめらかにスクロール */
+    scroll-behavior: smooth;
+    /* スクロールしたときにヘッダーにピタッと吸着するようにする */
+    scroll-padding-top: 50px;
+}
+
+body {
+    font-family: "Noto Sans JP", sans-serif;
+    font-weight: 300;
+    /* 文字の色 */
+    color: #505050;
+    /* 一番小さい文字の大きさをとりあえず設定 */
+    font-size: 15px;
+    line-height: calc(25 / 15);
+    letter-spacing: 0;
+}
+/* common */
+/* PC、SPの非表示 */
+@media (max-width: 767px) {
+    .pc {
+        display: none !important;
+    }
+}
+@media (min-width: 768px) {
+    .sp {
+        display: none !important;
+    }
+}
+main {
+    /* ヘッダーの高さ分MVを下にする→MVの写真が隠れないように */
+    margin-top: 45px;
+}
+img {
+    /* 画像を崩さず・余計な余白を出さず・レスポンシブ対応する設定 */
+    width: 100%;
+    height: auto;
+    /* 画像と画像がくっついている場合にへんな隙間が生まれるのを防ぐため */
+    display: block;
+}
+.inner {
+    max-width: 960px;
+    /* 横方向のマージンを自動にして、中央寄せするための指定 */
+    margin-inline: auto;
+}
+
+.section-title {
+    text-align: center;
+}
+.section-title h2 {
+    /* 上下左右の装飾がある場合など */
+    display: inline-block;
+    font-size: 30px;
+    line-height: calc(36 / 30);
+    position: relative;
+}
+.section-title::after {
+  content: "";
+  display: block;
+  width: 50px;        /* 線の長さ */
+  height: 2px;        /* 線の太さ */
+  background-color: #333;
+  margin: 16px auto 0; /* 上との間隔 & 中央寄せ */
+}
+
+/* header */
+.header {
+    width: 100%;
+    height: 50px;
+    background: #fff;
+    /* 画面幅が小さくなったときに画面幅に文字が被らないように (デザインカンプにはないよ)*/
+    padding-inline: 30px;
+    /* ヘッダーがスクロールをしても常に表示されるようにする */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+@media (max-width: 767px) {
+    .header {
+        /* 画面幅が小さくなったときに画面幅に文字が被らないように (デザインカンプは左のみ適用、20px(カンプにあるよ)) */
+        padding-inline: 20px;
+    }
+}
+.header .inner {
+    display: flex;
+    justify-content: space-between;
+
+    align-items: center;
+}
+.header__logo a {
+    /* クリック領域を広げるために・・・ */
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.4s;
+    margin-top: 8px;
+}
+/* hoverができる状態のときにhoverできるようになるよ */
+@media(any-hover: hover){
+.header__logo a:hover { 
+    /* ゆっくり変化するtransitionは親に書くよ */
+    opacity: 0.7;
+}
+}
+.header__nav ul {
+    display: flex;
+    align-items: center;
+    /* 横のギャップ */
+    justify-content: center;
+    column-gap: 42px;
+}
+.header__nav ul li a {
+    height: 50px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 300;
+    transition: 0.4s;
+}
+/* hoverができる状態のときにhoverできるようになるよ */
+@media(any-hover: hover){
+.header__nav ul li a:hover {
+    /* ゆっくり変化するtransitionは親に書くよ */
+    opacity: 0.7;
+}
+}
+
+/* mv */
+.mv {
+    /* 子にabsoluteしたい時は親にrelative */
+    position: relative;
+}
+.mv-image {
+    width: 100%;
+    aspect-ratio: 1080 / 500;
+}
+@media (max-width: 767px) {
+    .mv-image {
+        aspect-ratio: 375 / 550;
+    }
+}
+.mv-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+.mv-contents {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: flex-start;
+    padding-top: 40px;
+}
+.mv-catch {
+    width: 100%;
+    height: 46px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    
+    position:relative;
+    text-align: center;
+}
+.mv-catch h2 {
+    margin-top: 32px;
+    font-size: 40px;
+    font-weight: 300;
+    position: relative;
+    
+}
+@media (max-width: 767px) {
+    .mv-catch h2 {
+        margin-top: 46px;
+        font-size: 35px;
+        padding: 44px 30px ;
+        line-height: calc(40 / 34);
+    }
+}
+/* menu */
+.menu {
+    padding: 53px 30px 39px;
+}
+.menu__contents {
+    margin-top: 30px;
+}
+@media (max-width: 767px) {
+    .menu-contents {
+        margin-top: 50px;
+    }
+}
+.menu__items {
+    display: flex;
+    justify-content: space-between;
+}
+@media (max-width:767px) {
+    .menu__items {
+        flex-direction: column;
+        row-gap: 24px;
+    }
+}
+.menu-item {
+    width: calc(300 / 960 * 100%);
+}
+@media (max-width:767px) {
+    .menu-item {
+        width: 100%;
+    }
+}
+.menu-item__image img {
+    aspect-ratio: 300 / 250 ;
+    /* 必ずこれ追加 */
+    object-fit: cover;
+}
+@media (max-width:767px) {
+    .menu-item__image img {
+        aspect-ratio: 315 / 250 ;
+    }
+}
+.menu-item__textarea {
+    /* 基本的には親に余白を */
+    margin-top: 32px;
+    text-align: center;
+    line-height:calc(25 / 15) ;
+}
+@media (max-width:767px){
+    .menu-item__textarea {
+        margin-top: 20px;
+    }
+}
+.menu-item__textarea dt {
+    font-size: 20px;
+    line-height: calc(25 / 30);
+}
+.menu-item__textarea dd {
+    margin-top: 17px;
+}
+@media (max-width:767px){
+    .menu-item__textarea dd {
+    font-size: 15px;
+    line-height: calc(25 / 15);
+    }
+}
+.menu-item__textarea dl dt span {
+    /* いい感じのところで改行 */
+    display: inline-block;
+}
+/* ABOUT */
+.about {
+    padding: 44px 30px 51px;
+    background: rgba(0, 0, 0, 0.05);
+}
+@media (max-width:767px){
+    .about {
+        padding:45px 30px 50px ;
+    }
+}
+.about__contents {
+    margin-top: 30.5px;
+    display: flex;
+    column-gap: calc(39 / 960 * 100%);
+}
+@media (max-width:767px) {
+    .about__contents {
+        margin-top: 30px;
+        flex-direction: column-reverse;
+        row-gap: 28px;
+    }
+}
+
+.about__textarea {
+    flex: 1;
+}
+.about__textarea h3 {
+    font-size: 22px;
+    font-weight: 400;
+    line-height: calc(33 / 22);
+}
+@media (max-width:767px){
+    .about__textarea h3 br {
+    display: none;
+  }
+}
+
+.about__textarea p {
+    
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: calc(33 / 18);
+    font-weight: 300;
+    word-break: normal;
+}
+.about__textarea-pc{
+    display: none;
+}
+@media (max-width: 767px) {
+    .about__textarea p {
+        margin-top: 20px 30px 33px 30px ;
+        display: inline-block;
+        width: 315px;
+    height: 154px;
+    }
+    .about__textarea p br {
+        display: block;
+    }
+}
+
+.about__textarea a {
+    margin-top: 30px;
+    width: 250px;
+    height: 55px;
+    display: grid;
+    place-content: center;
+    background: rgba(80, 80, 80, 1);
+    color: #fff;
+    font-size: 25px;
+    font-weight: 300;
+    box-sizing: border-box;
+
+}
+@media (max-width: 767px) {
+    .about__textarea a{
+    width: 100%;
+    max-width: 315px;
+    margin-top: 27px;
+    /* 画面が変わっても中央寄せ */
+    margin-inline: auto;
+    }
+}
+.about__image {
+    width: calc(450 / 960 * 100%);
+}
+@media (max-width: 767px) {
+    .about__image {
+        width: 100%;
+    }
+}
+.about__image img {
+    width: 100%;
+    aspect-ratio: 450 / 300;
+    object-fit: cover;
+}
+@media (max-width: 767px){
+    .about__image img {
+        aspect-ratio: 315 / 250 ;
+    }
+}
+/* footer */
+.footer {
+    position: relative;
+    padding-block: 15px;
+    background: rgba(80, 80, 80, 1);
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: calc(33 / 20);
+}
+@media (max-width: 767px){
+    .footer{
+    font-size: 17px;
+    line-height: calc(33 / 17);
+    
+    }
+}
